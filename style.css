@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    position: relative;
+
+}
+.btn{
+    position: absolute;
+    font-size: 100px;
+    width: 170px;
+    height:170px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 0 0 20px ;
+    background-color: yellow;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: rgb(195, 195, 20);
+}
+#rockBtn{
+    top: 0px;
+}
+#paperBtn{
+    top: 250px;
+}
+#scissorsBtn{
+    top: 500px;
+}
+.display{
+    position: absolute;
+    font-size: 400px;
+    top: 200px;
+    left: 350px;
+    display: none;
+}
+/*.display:first-child{
+    display: block;
+}*/
+
+#line{
+    position: absolute;
+    width: 10px;
+    height: 100vh;
+    background-color: #000;
+    left: 50%;
+    right: 50%;
+}
+.COM{
+    
+    float: right;
+}
+.COM h2{
+    color: red;
+    position: absolute;
+    right: 300px;
+    font-size: 120px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.RPS{
+    top: 200px;
+    right: 280px;
+    position: absolute;
+    font-size: 400px;
+    display: none;
+}
+/*.RPS:first-child{
+    display: block;
+}*/
+#alertBoard{
+    display: none;
+    width: 700px;
+    height: 400px;
+    background-color: #fff;
+    border: black solid 2px;
+    top:200px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#info{
+    font-size:100px ;
+    font-weight: bold;
+    margin-top: 30px;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+}
+#restart{
+    width: 200px;
+    height: 90px;
+    border-radius: 15px ;
+    display: none;
+    margin:50px auto;
+    border: dashed;
+    background-color: yellow;
+    font-family: 'Oswald', sans-serif;
+    font-size: 50px;
+}
+#restart:hover{
+    background-color: rgb(195, 195, 20);
+}
