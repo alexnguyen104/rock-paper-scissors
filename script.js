@@ -66,9 +66,9 @@ function COMRPS(){
     }
 }
 function checking(){
-    // tie condition
     setTimeout(
         function(){
+            // tie condition
             if(userChoice == COMchoice){
                 alertBoard.style.display="block";
                 info.textContent="Tie !"
