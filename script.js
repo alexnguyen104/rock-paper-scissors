@@ -5,7 +5,8 @@ const alertBoard = document.getElementById("alertBoard");
 const info = document.getElementById("info");
 const restart = document.getElementById("restart")
 let userChoice;
-let COMchoice
+let COMchoice;
+let z =0;
 let RPS = Math.floor(Math.random()*3);
 //player
 btns[0].onclick=function(){
@@ -30,7 +31,32 @@ btns[2].onclick=function(){
 }
 //COM
 function COMRPS(){ 
-    COM[RPS].style.display="block";
+    let x = setInterval(function(){
+        z++;
+        if(z > 3){
+            z=1;
+        }
+        if(z == 1){
+            COM[2].style.display="none";
+            COM[0].style.display="block";
+        }
+        else if(z == 2){
+            COM[0].style.display="none";
+            COM[1].style.display="block";
+        }else{
+            COM[1].style.display="none";
+            COM[2].style.display="block";
+        }
+    },90);
+    setTimeout(function(){
+        clearInterval(x);
+        for(i=0;i<3;i++){
+            COM[i].style.display="none"
+        }
+        COM[RPS].style.display="block"
+    }, 1000)
+       
+   
     if(RPS == 0){
         COMchoice="rock";
     }else if(RPS == 1){
@@ -41,62 +67,67 @@ function COMRPS(){
 }
 function checking(){
     // tie condition
-    if(userChoice == COMchoice){
-        alertBoard.style.display="block";
-        info.textContent="Tie !"
-        info.style.fontSize="150px"
-        info.style.marginTop="60px"
-        setTimeout(function(){
-            alertBoard.style.display='none';
-            info.style.fontSize="100px"
-            info.style.marginTop="30px"
-            for(let i=0; i<display.length;i++){
-                display[i].style.display="none";
-                COM[i].style.display="none";
+    setTimeout(
+        function(){
+            if(userChoice == COMchoice){
+                alertBoard.style.display="block";
+                info.textContent="Tie !"
+                info.style.fontSize="150px"
+                info.style.marginTop="60px"
+                setTimeout(function(){
+                    alertBoard.style.display='none';
+                    info.style.fontSize="100px"
+                    info.style.marginTop="30px"
+                    for(let i=0; i<display.length;i++){
+                        display[i].style.display="none";
+                        COM[i].style.display="none";
+                    }
+                    RPS = Math.floor(Math.random()*3);
+                }, 1000)
             }
-            RPS = Math.floor(Math.random()*3);
-        }, 1000)
-    }
-    //win conditions
-    switch(userChoice){
-        case 'rock': if(COMchoice == "scissors"){
-            whenWin();
+            
+        
+        //win conditions
+        switch(userChoice){
+            case 'rock': if(COMchoice == "scissors"){
+                whenWin();
+            }
+            break;
+            case 'paper': if(COMchoice == "rock"){
+                whenWin();
+            }
+            break;
+            case 'scissors': if(COMchoice == "paper"){
+                whenWin();
+            }
+            break;
         }
-        break;
-        case 'paper': if(COMchoice == "rock"){
-            whenWin();
+        function whenWin(){
+            alertBoard.style.display="block";
+            info.textContent="You has won !"
+            restart.style.display="block";
         }
-        break;
-        case 'scissors': if(COMchoice == "paper"){
-            whenWin();
+        //lose conditions
+        switch(userChoice){
+            case 'rock': if(COMchoice == "paper"){
+                whenLose();
+            }
+            break;
+            case 'paper': if(COMchoice == "scissors"){
+                whenLose();
+            }
+            break;
+            case 'scissors': if(COMchoice == "rock"){
+                whenLose();
+            }
+            break;
         }
-        break;
-    }
-    function whenWin(){
-        alertBoard.style.display="block";
-        info.textContent="You has won !"
-        restart.style.display="block";
-    }
-    //lose conditions
-    switch(userChoice){
-        case 'rock': if(COMchoice == "paper"){
-            whenLose();
+        function whenLose(){
+            alertBoard.style.display="block";
+            info.textContent="You has lost !";
+            restart.style.display="block";
         }
-        break;
-        case 'paper': if(COMchoice == "scissors"){
-            whenLose();
-        }
-        break;
-        case 'scissors': if(COMchoice == "rock"){
-            whenLose();
-        }
-        break;
-    }
-    function whenLose(){
-        alertBoard.style.display="block";
-        info.textContent="You has lost !";
-        restart.style.display="block";
-    }
+    },1000);
 }
 restart.onclick=function(){
     location.reload();
