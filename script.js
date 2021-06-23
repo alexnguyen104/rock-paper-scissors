@@ -12,22 +12,30 @@ let RPS = Math.floor(Math.random()*3);
 btns[0].onclick=function(){
     display[0].style.display="block";
     userChoice = "rock";
+    btns[1].onclick=""
+    btns[2].onclick=""
     COMRPS();
     checking();
-    
+    btns[0].onclick=""
 }
 btns[1].onclick=function(){
     display[1].style.display="block";
     userChoice="paper";
+    btns[0].onclick=""
+    btns[2].onclick=""
     COMRPS();
     checking();
+    btns[1].onclick="";
     
 }
 btns[2].onclick=function(){
     display[2].style.display="block";
     userChoice="scissors";
+    btns[1].onclick=""
+    btns[0].onclick=""
     COMRPS();
     checking();
+    btns[2].onclick=""
 }
 //COM
 function COMRPS(){ 
